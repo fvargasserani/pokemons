@@ -3,13 +3,13 @@ $(document).ready(function () {
         $.ajax(pokeApiUrl, {
             success: function (response) {
                 response.results.forEach(function (data) {
-                    $('#pokemon-list').append('<p>' + data.name + '</p>');
-                    $('#pokemon-list').append("<button id='pokemon-info'>I'd like to know more about this pokemon!</button>").click(function () {
-                        top.location.href = data.url
+                    $('#pokemon-list').append('<p>' + data.name + '</p>' + "<a id='pokemon-info' href='" + data.url + "'><button>I'd like to know more about this pokemon!</button></a>");
+                    $('#pokemon-info').click(function () {
+                        window.location = $(this).attr('href');
                     })
-                    $('#more-pokemons').click(function () {
-                        top.location.href = data.next
-                    })
+                })
+                $('#more-pokemons').click(function () {
+                    top.location.href = response.next
                 })
             }
         })
