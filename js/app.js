@@ -3,8 +3,8 @@ $(document).ready(function () {
         $.ajax(pokeApiUrl, {
             success: function (response) {
                 response.results.forEach(function (data) {
-                    $('#name').append('<p>' + data.name + '</p>');
-                    $('#pokemon-info').append("<button id='pokemon-info'>I'd like to know more about this pokemon!</button>").click(function () {
+                    $('#pokemon-list').append('<p>' + data.name + '</p>');
+                    $('#pokemon-list').append("<button id='pokemon-info'>I'd like to know more about this pokemon!</button>").click(function () {
                         top.location.href = data.url
                     })
                     $('#more-pokemons').click(function () {
